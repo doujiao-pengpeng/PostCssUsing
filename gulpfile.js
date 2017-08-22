@@ -7,6 +7,7 @@ var cssnano = require('cssnano');
 var stylelint = require('stylelint');
 var reporter = require('postcss-reporter');
 var scss = require('gulp-sass');
+var cssvar = require('postcss-css-variables');
 
 gulp.task('lint-styles',['scss'],function(){
 	return gulp.src("src/css/*.css")
@@ -27,9 +28,9 @@ gulp.task('scss',function(){
 				.pipe(gulp.dest('src/css'));
 })
 
-gulp.task('styles',['lint-styles'],function(){
+gulp.task('styles',function(){
 	return gulp.src('src/css/*.css')
-			.pipe(postcss([autoprefixer]))
+			.pipe(postcss([autoprefixer,cssvar()]))
 			.pipe(gulp.dest('dist/css/'));
 });
 
@@ -51,7 +52,7 @@ gulp.task('sourcemaps',['minify'],function(){
 
 
 
-gulp.task('default',['scss','styles']);
+gulp.task('default',['styles']);
 
 var watcher = gulp.watch('src/css/*.css',['default']);
 watcher.on('change',function(event){

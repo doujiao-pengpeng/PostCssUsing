@@ -1,0 +1,14 @@
+:root {
+	--white: #fff;
+	--blue: blue;
+	--font-size: 100px;
+}
+
+#container{
+	--blue: red;
+	display: flex;
+	background: var(--white);
+}
+#container #content{
+	background: var(--blue);
+}
