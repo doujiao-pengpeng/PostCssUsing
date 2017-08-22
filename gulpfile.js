@@ -8,6 +8,8 @@ var stylelint = require('stylelint');
 var reporter = require('postcss-reporter');
 var scss = require('gulp-sass');
 var cssvar = require('postcss-css-variables');
+var cssmixins = require('postcss-mixins');
+var calc = require('postcss-calc');
 
 gulp.task('lint-styles',['scss'],function(){
 	return gulp.src("src/css/*.css")
@@ -30,7 +32,12 @@ gulp.task('scss',function(){
 
 gulp.task('styles',function(){
 	return gulp.src('src/css/*.css')
-			.pipe(postcss([autoprefixer,cssvar()]))
+			.pipe(postcss([
+				autoprefixer,
+				cssvar(),
+				cssmixins(),
+				calc()
+			]))
 			.pipe(gulp.dest('dist/css/'));
 });
 

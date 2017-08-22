@@ -12,3 +12,14 @@
 #container #content{
 	background: var(--blue);
 }
+
+@define-mixin fontstyle $size, $color {
+	font-size: $(size)px;
+	font-size: calc($size/16)rem;
+	color: $color;
+}
+
+h3{
+	@mixin fontstyle 32, var(--white);
+	text-transform: uppercase; 
+}

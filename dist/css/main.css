@@ -7,3 +7,10 @@
 #container #content{
 	background: red;
 }
+
+h3{
+	font-size: 32px;
+	font-size: 2rem;
+	color: var(--white);
+	text-transform: uppercase; 
+}
